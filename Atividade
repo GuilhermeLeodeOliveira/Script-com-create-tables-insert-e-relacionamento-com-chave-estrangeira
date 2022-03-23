@@ -1,0 +1,40 @@
+create database escola;
+
+create table turmas(
+    idTurma int PRIMARY KEY not null,
+    nome varchar(3)
+);
+
+create table aluno(
+    idAluno int PRIMARY KEY not null,
+    nome varchar(200),
+    idade int,
+    endereco varchar(200),
+    telefone numeric(11),
+    idTurma int REFERENCES turmas(id)
+);
+
+create table professor(
+    idProfessor int PRIMARY KEY not null,
+    nome varchar(225),
+    especializacao varchar(100),
+    idTurma int REFERENCES turmas(id)
+);
+
+insert into turmas VALUES
+(0, 'INI 1'),
+(1, 'INI 2'),
+(2, 'INI 3'),
+(3, 'INI 4'),
+(4, 'PAV 1'),
+(5, 'PAV 2'),
+(6, 'PAV 3'),
+(7, 'PAV 4');
+
+insert into aluno VALUES
+(0, 'Guilherme', 18, 'Rua Silvio Ribeiro dos Santos', 11980835811, 4),
+(1, 'Ana', 18, 'Rua Antonio Olimpio', 11958635972, 5);
+
+insert into professor VALUES
+(0, 'Altair', 'Geografia', 5),
+(1, 'Akira', 'Desenvolvimento de Sistemas Web', 3);
